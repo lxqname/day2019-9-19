@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -19,15 +20,14 @@ public interface TaskMapper extends JpaRepository<TaskDo, Integer> {
      * @param id
      * @return
      */
-    TaskDo getTaskDoById(Integer id);
+    Optional<TaskDo> getTaskDoById(Integer id);
 
     /**
-     * 查询所有未处理及要存在内存中的任务
-     *
-     * @param status
+     * 查询所有未处理的任务
      * @param date
+     * @param status
      * @return
      */
-    List<TaskDo> getAllByExecuteTimeBeforeAndStatus(Date date, Integer status);
+    List<TaskDo> getAllByExecuteTimeBeforeAndStatus(Date date,Integer status);
 
 }

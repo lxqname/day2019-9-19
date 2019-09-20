@@ -1,8 +1,6 @@
 package com.example.demo.domian.entity;
 
 
-import javax.persistence.Column;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -109,4 +107,6 @@ public class Task {
                 ", executeTime=" + executeTime +
                 '}';
     }
+
+
 }

@@ -8,11 +8,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author 86151
+ */
 @Service
 public class TaskDaoImpl implements ITaskDao {
 
@@ -23,35 +25,29 @@ public class TaskDaoImpl implements ITaskDao {
     public Task saveTask(Task task) {
         TaskDo taskDo = new TaskDo();
         TaskDo taskDo1 = taskMapper.save(taskDo);
-        if (null!=taskDo1){
-            BeanUtils.copyProperties(taskDo1,task);
+        if (null != taskDo1) {
+            BeanUtils.copyProperties(taskDo1, task);
         }
         return task;
     }
 
     @Override
-    public Task getTaskDoById(Integer id) {
-        TaskDo taskDo = taskMapper.getTaskDoById(id);
+    public Task getTaskById(Integer id) {
         Task task = new Task();
-        if (null!=taskDo){
-            BeanUtils.copyProperties(taskDo,task);
-            return task;
-        }
-       return task;
+        taskMapper.getTaskDoById(id)
+                .ifPresent(t -> BeanUtils.copyProperties(t, task));
+        return task;
     }
 
     @Override
-    public List<Task> getAll(Integer status) {
-        Date date = new Date();
-        List<TaskDo> taskDos = taskMapper.getAllByExecuteTimeBeforeAndStatus(date,0);
-        if (0!=taskDos.size()){
-            return taskDos.stream().map(t->{
-                Task task = new Task();
-                BeanUtils.copyProperties(t,task);
-                return task;
-            }).collect(Collectors.toList());
-        }
-        return new ArrayList<Task>();
+    public List<Task> getAllByExecuteTimeBeforeAndStatus(Date date,Integer status) {
+        //查询根据状态值，执行任务时间之前的传入的时间的任务
+        return taskMapper.getAllByExecuteTimeBeforeAndStatus(date,status)
+                .stream().map(t -> {
+                    Task task = new Task();
+                    BeanUtils.copyProperties(t, task);
+                    return task;
+                }).collect(Collectors.toList());
     }
 
 

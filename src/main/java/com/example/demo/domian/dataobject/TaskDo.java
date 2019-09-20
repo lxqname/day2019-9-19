@@ -1,5 +1,7 @@
 package com.example.demo.domian.dataobject;
 
+import cn.hutool.core.date.DateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,7 +23,7 @@ public class TaskDo {
     private String method;
 
     @Column(name = "create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @Column(name = "data")
     private String data;
@@ -67,11 +69,11 @@ public class TaskDo {
         this.method = method;
     }
 
-    public LocalDateTime getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 

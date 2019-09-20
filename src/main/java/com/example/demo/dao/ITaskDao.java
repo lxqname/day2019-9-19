@@ -3,6 +3,7 @@ package com.example.demo.dao;
 
 import com.example.demo.domian.entity.Task;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,7 +12,8 @@ import java.util.List;
 public interface ITaskDao {
 
     /**
-     * 保存任务
+     * 保存任务/更新任务
+     *
      * @param task
      * @return
      */
@@ -19,13 +21,18 @@ public interface ITaskDao {
 
     /**
      * 根据id查询任务
+     *
+     * @param id
      * @return
      */
-    Task getTaskDoById(Integer id);
+    Task getTaskById(Integer id);
 
     /**
-     * 查询所有未处理及要存在内存中的任务
+     * 查询根据状态值，执行任务时间之前的传入的时间的任务
+     *
+     * @param date
+     * @param status
      * @return
      */
-    List<Task> getAll(Integer status);
+    List<Task> getAllByExecuteTimeBeforeAndStatus(Date date, Integer status);
 }
