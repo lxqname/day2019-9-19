@@ -18,7 +18,12 @@ public class Constant {
     /**
      * 判断GET请求值
      */
-    public static final String GET="get";
+    public static final String GET="GET";
+
+    /**
+     * 判断POST请求值
+     */
+    public static final String POST="POST";
 
     /**
      * 成功状态码的最小值
@@ -26,7 +31,13 @@ public class Constant {
     public static final int STATUS_MIN=200;
 
     /**
-     * 成功状态码的最大值
+     * 重试机制的最大值
      */
-    public static final int STATUS_MAX=210;
+    public static final int MAX_ATTEMPTS=3;
+    /**
+     * 休眠时间
+     */
+    public static final int SLEEP_MINE=1000;
+
+
 }

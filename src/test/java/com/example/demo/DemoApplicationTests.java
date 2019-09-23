@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+
 
 
 @RunWith(SpringRunner.class)
@@ -27,13 +27,13 @@ public class DemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        Task taskDoById = taskDao.getTaskById(1);
+        Task taskDoById = taskDao.getTaskById(2);
         System.out.println(taskDoById);
-        System.out.println(taskDoById.getData());
+        System.out.println("--------"+taskDoById.getData());
         String data = taskDoById.getData();
         Object userName = JSON.parseObject(data).get("userName");
         System.out.println(userName);
-        List<Task> allByStatus = taskDao.getAllByStatus(0);
+        List<Task> allByStatus = taskDao.getAllByExecuteTimeBeforeAndStatus(new Date(),0);
         System.out.println("====="+allByStatus);
     }
 

@@ -24,6 +24,7 @@ public class TaskDaoImpl implements ITaskDao {
     @Override
     public Task saveTask(Task task) {
         TaskDo taskDo = new TaskDo();
+        BeanUtils.copyProperties(task,taskDo);
         TaskDo taskDo1 = taskMapper.save(taskDo);
         if (null != taskDo1) {
             BeanUtils.copyProperties(taskDo1, task);
