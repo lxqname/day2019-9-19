@@ -8,7 +8,7 @@ public interface ITaskService {
      * @param task
      * @return
      */
-    Task saveTask(Task task);
+    Object saveTask(Task task);
 
     /**
      * 根据id查询任务

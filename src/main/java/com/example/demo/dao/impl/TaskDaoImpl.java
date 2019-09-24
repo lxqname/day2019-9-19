@@ -1,5 +1,6 @@
 package com.example.demo.dao.impl;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.example.demo.dao.ITaskDao;
 import com.example.demo.domian.dataobject.TaskDo;
 import com.example.demo.domian.entity.Task;
@@ -24,7 +25,7 @@ public class TaskDaoImpl implements ITaskDao {
     @Override
     public Task saveTask(Task task) {
         TaskDo taskDo = new TaskDo();
-        BeanUtils.copyProperties(task,taskDo);
+        BeanUtils.copyProperties(task, taskDo);
         TaskDo taskDo1 = taskMapper.save(taskDo);
         if (null != taskDo1) {
             BeanUtils.copyProperties(taskDo1, task);
@@ -41,9 +42,9 @@ public class TaskDaoImpl implements ITaskDao {
     }
 
     @Override
-    public List<Task> getAllByExecuteTimeBeforeAndStatus(Date date,Integer status) {
+    public List<Task> getAllByExecuteTimeBeforeAndStatus(Date date, Integer status) {
         //查询根据状态值，执行任务时间之前的传入的时间的任务
-        return taskMapper.getAllByExecuteTimeBeforeAndStatus(date,status)
+        return taskMapper.getAllByExecuteTimeBeforeAndStatus(date, status)
                 .stream().map(t -> {
                     Task task = new Task();
                     BeanUtils.copyProperties(t, task);

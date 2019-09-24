@@ -2,10 +2,7 @@ package com.example.demo.domian.dataobject;
 
 import cn.hutool.core.date.DateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,6 +11,7 @@ import java.util.Date;
 public class TaskDo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "time_limited")

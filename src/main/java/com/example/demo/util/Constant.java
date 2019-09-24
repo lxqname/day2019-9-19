@@ -38,6 +38,10 @@ public class Constant {
      * 休眠时间
      */
     public static final int SLEEP_MINE=1000;
+    /**
+     * 开启线程的总数
+     */
+    public static final int POOL_SUM=20;
 
 
 }
