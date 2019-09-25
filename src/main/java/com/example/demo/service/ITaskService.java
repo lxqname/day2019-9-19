@@ -18,4 +18,5 @@ public interface ITaskService {
     Task getTaskDoById(Integer id);
 
 
+    void sendTask();
 }

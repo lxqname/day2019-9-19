@@ -1,11 +1,13 @@
 package com.example.demo.domian.dataobject;
 
-import cn.hutool.core.date.DateTime;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 
+/**
+ * @author 86151
+ */
 @Entity
 @Table(name = "task")
 public class TaskDo {
@@ -13,9 +15,6 @@ public class TaskDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "time_limited")
-    private Integer timeLimited;
 
     @Column(name = "method")
     private String method;
@@ -49,14 +48,6 @@ public class TaskDo {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getTimeLimited() {
-        return timeLimited;
-    }
-
-    public void setTimeLimited(Integer timeLimited) {
-        this.timeLimited = timeLimited;
     }
 
     public String getMethod() {
@@ -103,7 +94,6 @@ public class TaskDo {
     public String toString() {
         return "TaskDo{" +
                 "id=" + id +
-                ", timeLimited=" + timeLimited +
                 ", method='" + method + '\'' +
                 ", createTime=" + createTime +
                 ", data='" + data + '\'' +

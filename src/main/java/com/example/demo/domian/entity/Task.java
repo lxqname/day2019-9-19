@@ -10,9 +10,6 @@ public class Task {
     private Integer id;
 
 
-    private Integer timeLimited;
-
-
     private String method;
 
 
@@ -44,14 +41,6 @@ public class Task {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getTimeLimited() {
-        return timeLimited;
-    }
-
-    public void setTimeLimited(Integer timeLimited) {
-        this.timeLimited = timeLimited;
     }
 
     public String getMethod() {
@@ -98,7 +87,6 @@ public class Task {
     public String toString() {
         return "Task{" +
                 "id=" + id +
-                ", timeLimited=" + timeLimited +
                 ", method='" + method + '\'' +
                 ", createTime=" + createTime +
                 ", data='" + data + '\'' +

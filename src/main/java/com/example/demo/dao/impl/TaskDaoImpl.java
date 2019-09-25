@@ -1,6 +1,5 @@
 package com.example.demo.dao.impl;
 
-import cn.hutool.core.util.ObjectUtil;
 import com.example.demo.dao.ITaskDao;
 import com.example.demo.domian.dataobject.TaskDo;
 import com.example.demo.domian.entity.Task;
@@ -26,10 +25,8 @@ public class TaskDaoImpl implements ITaskDao {
     public Task saveTask(Task task) {
         TaskDo taskDo = new TaskDo();
         BeanUtils.copyProperties(task, taskDo);
-        TaskDo taskDo1 = taskMapper.save(taskDo);
-        if (null != taskDo1) {
-            BeanUtils.copyProperties(taskDo1, task);
-        }
+        taskMapper.save(taskDo);
+        BeanUtils.copyProperties(taskDo, task);
         return task;
     }
 
@@ -51,6 +48,4 @@ public class TaskDaoImpl implements ITaskDao {
                     return task;
                 }).collect(Collectors.toList());
     }
-
-
 }
