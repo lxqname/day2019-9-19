@@ -15,9 +15,6 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 /**
@@ -41,7 +38,7 @@ public class TaskManage {
 
     @Retryable(value = Exception.class, maxAttempts = Constant.MAX_ATTEMPTS, backoff = @Backoff(delay = 1000L, multiplier = 1.2))
     public int run(Task task) throws Exception {
-        int status = 0;
+        int status =0;
         logger.info(Thread.currentThread().getName() + "执行" + task.getId() + "号任务");
         //得到请求
         HttpRequest httpRequest = getRequestByUrl.apply(task);

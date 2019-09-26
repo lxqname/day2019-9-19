@@ -8,12 +8,12 @@ public class Constant {
     /**
      * 到达近LIMITED_TIME时间内，将数据库的任务存储到内存中
      */
-    public static final int LIMITED_TIME=120*60*1000;
+    public static final int LIMITED_TIME=60*60*1000;
 
     /**
      * 内存最小时间（存入任务时，小于这个时间，直接存入内存）
      */
-    public static final int MEMORY_MIN=120;
+    public static final int MEMORY_MIN=120*60*1000;
 
     /**
      * 判断GET请求值
@@ -38,10 +38,7 @@ public class Constant {
      * 休眠时间
      */
     public static final int SLEEP_MINE=1000;
-    /**
-     * 开启线程的总数
-     */
-    public static final int POOL_SUM=20;
+
 
 
 }
